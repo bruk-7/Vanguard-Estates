@@ -3,153 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanguard Estates | Architectural Mastery</title>
+    <title>Apex Collective | Global Real Estate & Management</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --slate: #1A1C1E;
-            --concrete: #F4F4F4;
-            --copper: #B87333; /* The "Luxury" accent for contractors */
-            --white: #FFFFFF;
+            --navy: #0D1B2A;
+            --gold-leaf: #D4AF37;
+            --off-white: #F9F9F9;
+            --glass: rgba(255, 255, 255, 0.95);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: var(--white); 
-            color: var(--slate); 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden;
+            background-color: var(--off-white); 
+            font-family: 'Inter', sans-serif; 
+            color: var(--navy);
+            line-height: 1.6;
         }
 
-        /* Nav */
+        /* --- 1. NAVIGATION (THE HUB) --- */
         nav {
             position: fixed; top: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 8%; z-index: 1000;
-            background: rgba(255,255,255,0.9); border-bottom: 2px solid var(--slate);
+            padding: 20px 8%; z-index: 1000;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; color: var(--slate); text-decoration: none; }
+        .logo { font-family: 'Tenor Sans', sans-serif; font-size: 1.5rem; letter-spacing: 5px; text-decoration: none; color: var(--navy); }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); }
+        .nav-links a:hover { color: var(--gold-leaf); }
 
-        /* Hero with Parallax Background */
+        /* --- 2. HOME PAGE (HERO) --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070') no-repeat center center fixed;
-            background-size: cover;
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+            background: linear-gradient(rgba(13, 27, 42, 0.4), rgba(13, 27, 42, 0.4)), 
+                        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 6rem; text-transform: uppercase; line-height: 0.9; }
-        .hero span { color: var(--copper); }
+        .hero h1 { font-family: 'Tenor Sans', sans-serif; font-size: 4.5rem; margin-bottom: 20px; }
 
-        /* Split Section Surprise */
-        .split-section { display: flex; height: 80vh; align-items: center; }
-        .split-text { flex: 1; padding: 10%; background: var(--slate); color: white; }
-        .split-img { flex: 1; height: 100%; background: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2074') center/cover; }
+        /* --- 3. SERVICES PAGE --- */
+        .section { padding: 120px 10%; }
+        .section-title { font-family: 'Tenor Sans', sans-serif; font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-item { background: white; padding: 50px 30px; border: 1px solid #eee; transition: var(--transition); text-align: center; }
+        .service-item:hover { border-color: var(--gold-leaf); transform: translateY(-10px); }
+        .service-item i { font-size: 2rem; color: var(--gold-leaf); margin-bottom: 20px; }
 
-        /* Luxury Service Cards */
-        .services { padding: 100px 8%; background: var(--concrete); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .s-card { 
-            background: white; padding: 50px; border-bottom: 5px solid var(--copper);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .s-card:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .s-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.8rem; margin-bottom: 15px; }
+        /* --- 4. GALLERY (PORTFOLIO) --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 300px; gap: 15px; }
+        .gallery-img { background-size: cover; background-position: center; transition: var(--transition); cursor: pointer; position: relative; overflow: hidden; }
+        .gallery-img:hover { filter: brightness(0.8); }
+        .gallery-img:nth-child(1) { grid-column: span 2; }
+        .gallery-img:nth-child(4) { grid-column: span 2; }
 
-        /* Popup Hub (Telegram/WhatsApp) */
-        .hub-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
-        .hub-main { 
-            background: var(--copper); width: 70px; height: 70px; border-radius: 5px; 
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s;
-        }
-        .hub-main:hover { background: var(--slate); }
-        .hub-options { 
-            display: none; flex-direction: column; gap: 10px; position: absolute; bottom: 85px; right: 0;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .hub-options a { 
-            width: 60px; height: 60px; border-radius: 5px; display: flex; align-items: center; 
-            justify-content: center; color: white; text-decoration: none; font-size: 1.5rem; 
-        }
+        /* --- 5. TESTIMONIALS --- */
+        .testimonial-slider { max-width: 800px; margin: 0 auto; text-align: center; padding: 50px; background: var(--navy); color: white; border-radius: 5px; }
+        .quote { font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
 
-        .btn-copper {
-            background: var(--copper); color: white; padding: 20px 40px; text-decoration: none;
-            display: inline-block; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-top: 20px;
-        }
+        /* --- 6. ABOUT PAGE --- */
+        .about-flex { display: flex; gap: 80px; align-items: center; }
+        .about-content { flex: 1; }
+        .about-image { flex: 1; height: 500px; background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973') center/cover; }
+
+        /* --- 7. CONTACT PAGE --- */
+        .contact-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; font-family: inherit; }
+        .btn-navy { background: var(--navy); color: white; padding: 15px 40px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- WHATSAPP / TELEGRAM POPUP --- */
+        .fixed-hub { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        .hub-btn { background: var(--gold-leaf); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .hub-menu { display: none; flex-direction: column; gap: 15px; position: absolute; bottom: 80px; right: 0; }
+        .hub-menu a { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+
+        footer { padding: 40px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">VANGUARD <span style="color:var(--copper)">ESTATES</span></a>
-        <div style="font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;">
-            <a href="#services" style="text-decoration:none; color:var(--slate); margin-right:20px;">PROJECTS</a>
-            <a href="#contact" style="background:var(--slate); color:white; padding:10px 20px; text-decoration:none;">ESTIMATE</a>
-        </div>
+        <a href="#home" class="logo">APEX</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Portfolio</a></li>
+            <li><a href="#about">The Collective</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div>
-            <p style="letter-spacing: 10px; margin-bottom: 20px;">LUXURY BUILDERS</p>
-            <h1>Beyond <br><span>Structure.</span></h1>
+            <p style="letter-spacing: 8px; margin-bottom: 20px;">ESTABLISHED IN GENEVA</p>
+            <h1>Defining High-Value <br>Living</h1>
+            <a href="#gallery" class="btn-navy" style="background:transparent; border:1px solid white;">Explore Listings</a>
         </div>
     </section>
 
-    <section class="split-section">
-        <div class="split-text">
-            <h2 style="font-family:'Oswald'; font-size: 3rem; margin-bottom: 20px;">The Master Suite Project</h2>
-            <p style="opacity: 0.7; line-height: 1.8;">A complete restoration of a 1920s penthouse. We merged industrial steel with warm walnut woods to create a sanctuary above the city.</p>
-            <a href="#" class="btn-copper">View Portfolio</a>
-        </div>
-        <div class="split-img"></div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="grid">
-            <div class="s-card">
-                <h3>Custom Estates</h3>
-                <p>Ground-up construction for the visionary homeowner.</p>
+    <section id="services" class="section">
+        <h2 class="section-title">Our Ecosystem</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fa-solid fa-key"></i>
+                <h3>Asset Acquisition</h3>
+                <p>Private access to off-market luxury listings globally.</p>
             </div>
-            <div class="s-card">
-                <h3>Modern Remodels</h3>
-                <p>Transforming existing spaces into contemporary masterpieces.</p>
+            <div class="service-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Portfolio Growth</h3>
+                <p>Strategic management to ensure property appreciation.</p>
             </div>
-            <div class="s-card">
-                <h3>Smart Infrastructure</h3>
-                <p>Seamlessly integrating AI and automation into the luxury home.</p>
+            <div class="service-item">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>Concierge Rentals</h3>
+                <p>End-to-end management for high-yield short-term stays.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="padding: 100px 8%; text-align: center;">
-        <h2 style="font-family:'Oswald'; font-size: 3rem;">Start Your Build</h2>
-        <form style="max-width: 600px; margin: 40px auto;">
-            <input type="text" placeholder="Project Type" style="width:100%; padding:20px; margin-bottom:10px; border:1px solid #ddd;">
-            <input type="email" placeholder="Your Email" style="width:100%; padding:20px; margin-bottom:20px; border:1px solid #ddd;">
-            <button class="btn-copper" style="width:100%; border:none; cursor:pointer;">Request Site Visit</button>
-        </form>
+    <section id="gallery" class="section" style="background: #fff;">
+        <h2 class="section-title">Featured Assets</h2>
+        <div class="gallery-grid">
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811')"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750')"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227')"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233')"></div>
+        </div>
     </section>
 
-    <div class="hub-container">
-        <div class="hub-options" id="hubMenu">
-            <a href="#" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" style="background: #0088CC;"><i class="fab fa-telegram-plane"></i></a>
+    <section class="section">
+        <div class="testimonial-slider">
+            <div class="quote">"Apex Collective doesn't just manage properties; they manage legacies. Their discretion is unmatched."</div>
+            <p style="letter-spacing: 3px; font-size: 0.8rem; color: var(--gold-leaf);">- VICTORIA B., HONG KONG</p>
         </div>
-        <div class="hub-main" onclick="toggleHub()">
-            <i class="fa-solid fa-hammer" style="color:white; font-size: 1.5rem;"></i>
+    </section>
+
+    <section id="about" class="section">
+        <div class="about-flex">
+            <div class="about-content">
+                <h2 style="font-family:'Tenor Sans'; font-size: 3rem; margin-bottom: 20px;">The Collective</h2>
+                <p>Apex is an invitation-only real estate firm focusing on the world's most desirable postcodes. From Dubai to New York, our partners ensure your capital is secured in the finest bricks and mortar.</p>
+            </div>
+            <div class="about-image"></div>
         </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <div>
+                <h2 style="font-family:'Tenor Sans'; font-size: 3rem;">Let's Talk</h2>
+                <p style="margin-top: 20px;">Inquiries regarding asset management or private listings are handled with 100% confidentiality.</p>
+            </div>
+            <form>
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email">
+                <textarea rows="5" placeholder="Your Interest (Buy/Manage/Sell)"></textarea>
+                <button class="btn-navy">Inquire Now</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="fixed-hub">
+        <div class="hub-menu" id="hub">
+            <a href="#" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" style="background:#0088CC"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+        <div class="hub-btn" onclick="toggleHub()"><i class="fa-solid fa-paper-plane"></i></div>
     </div>
+
+    <footer>
+        &copy; 2026 APEX COLLECTIVE REAL ESTATE. REGISTERED IN SWITZERLAND.
+    </footer>
 
     <script>
         function toggleHub() {
-            const menu = document.getElementById('hubMenu');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+            const h = document.getElementById('hub');
+            h.style.display = (h.style.display === 'flex') ? 'none' : 'flex';
         }
+
+        // Luxury Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '10px 8%';
+                nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.05)';
+            } else {
+                nav.style.padding = '20px 8%';
+                nav.style.boxShadow = 'none';
+            }
+        });
     </script>
 </body>
 </html>
